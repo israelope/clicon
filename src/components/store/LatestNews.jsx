@@ -1,17 +1,35 @@
+import { useNavigate } from 'react-router-dom'; // 1. Import the hook
 import { ArrowRight, Calendar, MessageCircle, User } from 'lucide-react';
 import { LATEST_NEWS_DATA } from '../../data';
 
 const LatestNews = () => {
+  const navigate = useNavigate(); // 2. Initialize it
+
   return (
     <section className="max-w-[1320px] mx-auto px-6 py-16">
       
       {/* --- 4-Column Product Lists --- */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
-        {/* We pass the data to each list. You can slice or filter these later if you want different items in each column */}
-        <MiniProductList title="Flash Sale Today" data={LATEST_NEWS_DATA.miniLists} />
-        <MiniProductList title="Best Sellers" data={LATEST_NEWS_DATA.miniLists} />
-        <MiniProductList title="Top Rated" data={LATEST_NEWS_DATA.miniLists} />
-        <MiniProductList title="New Arrival" data={LATEST_NEWS_DATA.miniLists} />
+        <MiniProductList 
+          title="Flash Sale Today" 
+          data={LATEST_NEWS_DATA.miniLists} 
+          onNavigate={(id) => navigate(`/product/${id}`)} // Navigate to product details
+        />
+        <MiniProductList 
+          title="Best Sellers" 
+          data={LATEST_NEWS_DATA.miniLists} 
+          onNavigate={(id) => navigate(`/product/${id}`)}
+        />
+        <MiniProductList 
+          title="Top Rated" 
+          data={LATEST_NEWS_DATA.miniLists} 
+          onNavigate={(id) => navigate(`/product/${id}`)}
+        />
+        <MiniProductList 
+          title="New Arrival" 
+          data={LATEST_NEWS_DATA.miniLists} 
+          onNavigate={(id) => navigate(`/product/${id}`)}
+        />
       </div>
 
       {/* --- Latest News (Blog Section) --- */}
@@ -20,7 +38,6 @@ const LatestNews = () => {
           <h2 className="text-3xl font-bold text-center mb-10 text-clicon-black">Latest News</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* FIX: Now using LATEST_NEWS_DATA.blogPosts instead of hardcoding 3 cards */}
             {LATEST_NEWS_DATA.blogPosts.map((post) => (
               <BlogCard 
                 key={post.id}
@@ -30,6 +47,8 @@ const LatestNews = () => {
                 comments={post.comments}
                 title={post.title}
                 desc={post.desc}
+                // 3. Trigger navigation to the blog detail page
+                onClick={() => navigate(`/blog/${post.id}`)} 
               />
             ))}
           </div>
@@ -40,13 +59,16 @@ const LatestNews = () => {
 };
 
 /* Helper: Mini Product List Column */
-const MiniProductList = ({ title, data }) => (
+const MiniProductList = ({ title, data, onNavigate }) => (
   <div className="space-y-4">
     <h3 className="font-bold text-sm uppercase mb-6 tracking-wide text-clicon-black">{title}</h3>
     
-    {/* Dynamic mapping from the data prop passed from the parent */}
     {data && data.map((item) => (
-      <div key={item.id} className="flex items-center gap-4 p-3 border border-gray-100 rounded-sm hover:border-clicon-orange transition-all cursor-pointer group bg-white">
+      <div 
+        key={item.id} 
+        onClick={() => onNavigate(item.id)} // Added navigation click
+        className="flex items-center gap-4 p-3 border border-gray-100 rounded-sm hover:border-clicon-orange transition-all cursor-pointer group bg-white"
+      >
         <div className="w-20 h-20 bg-gray-50 rounded-sm overflow-hidden shrink-0 flex items-center justify-center">
           <img src={item.image} alt={item.name} className="w-full h-full object-contain group-hover:scale-110 transition duration-300" />
         </div>
@@ -62,8 +84,11 @@ const MiniProductList = ({ title, data }) => (
 );
 
 /* Helper: Blog Card */
-const BlogCard = ({ image, author, date, comments, title, desc }) => (
-  <div className="bg-white p-6 rounded-sm shadow-sm hover:shadow-xl transition-all group cursor-pointer">
+const BlogCard = ({ image, author, date, comments, title, desc, onClick }) => (
+  <div 
+    onClick={onClick} // Click anywhere on card to read
+    className="bg-white p-6 rounded-sm shadow-sm hover:shadow-xl transition-all group cursor-pointer"
+  >
     <div className="overflow-hidden rounded-sm mb-5 aspect-video">
       <img src={image} alt="blog" className="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
     </div>

@@ -1,8 +1,10 @@
+import { useNavigate } from 'react-router-dom'; // 1. Import the hook
 import { ArrowRight, ShoppingCart, Heart, Eye, Star } from 'lucide-react';
-// Ensure the path to your data file is correct
 import { BEST_DEALS_DATA } from '../../data';
 
 const BestDeals = () => {
+  const navigate = useNavigate(); // 2. Initialize it
+
   return (
     <section className="max-w-[1320px] mx-auto px-6 py-10">
       <div className="flex items-center justify-between mb-6">
@@ -15,15 +17,20 @@ const BestDeals = () => {
             </div>
           </div>
         </div>
-        <button className="text-clicon-blue font-semibold text-sm flex items-center gap-1 group hover:underline">
+        {/* Navigate to the full shop page */}
+        <button 
+          onClick={() => navigate('/shop')}
+          className="text-clicon-blue font-semibold text-sm flex items-center gap-1 group hover:underline"
+        >
           Browse All Product <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
         </button>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 border border-gray-100 rounded-sm overflow-hidden bg-white">
         
-        {/* --- Large Featured Deal (Static or first item) --- */}
-        <div className="lg:col-span-1 p-6 border-r border-gray-100 group relative">
+        {/* --- Large Featured Deal --- */}
+        {/* We can hardcode an ID for now or grab the first one from your data */}
+        <div className="lg:col-span-1 p-6 border-r border-gray-100 group relative cursor-pointer" onClick={() => navigate('/product/xbox-featured')}>
           <div className="relative mb-4">
              <span className="bg-[#F3DE2C] text-black text-[10px] font-bold px-2 py-1 rounded-sm absolute top-0 left-0 z-10">32% OFF</span>
              <span className="bg-[#EE5858] text-white text-[10px] font-bold px-2 py-1 rounded-sm absolute top-7 left-0 uppercase z-10">Hot</span>
@@ -52,17 +59,19 @@ const BestDeals = () => {
           </div>
         </div>
 
-        {/* --- Small Deals Grid (Dynamic 8 slots) --- */}
+        {/* --- Small Deals Grid --- */}
         <div className="lg:col-span-4 grid grid-cols-2 lg:grid-cols-4">
            {BEST_DEALS_DATA.slice(0, 8).map((product) => (
              <SmallProductCard 
                 key={product.id}
+                id={product.id} // Pass the ID down
                 name={product.name}
                 price={product.price}
                 oldPrice={product.oldPrice}
                 discount={product.discount}
                 status={product.status}
                 image={product.image}
+                onNavigate={(id) => navigate(`/product/${id}`)} // Pass a function to handle navigation
              />
            ))}
         </div>
@@ -71,14 +80,16 @@ const BestDeals = () => {
   );
 };
 
-/* Reusable Small Product Card */
-const SmallProductCard = ({ name, price, oldPrice, discount, status, image }) => (
-  <div className="p-4 border-r border-b border-gray-100 hover:shadow-xl transition-all relative group bg-white flex flex-col justify-between">
+/* Updated Small Product Card */
+const SmallProductCard = ({ id, name, price, oldPrice, discount, status, image, onNavigate }) => (
+  <div 
+    onClick={() => onNavigate(id)} // Trigger navigation on click
+    className="p-4 border-r border-b border-gray-100 hover:shadow-xl transition-all relative group bg-white flex flex-col justify-between cursor-pointer"
+  >
     <div>
       {discount && <span className="bg-[#F3DE2C] text-black text-[10px] font-bold px-2 py-1 rounded-sm absolute top-4 left-4 z-10">{discount}</span>}
       {status && <span className="bg-gray-400 text-white text-[10px] font-bold px-2 py-1 rounded-sm absolute top-4 left-4 uppercase z-10">{status}</span>}
       
-      {/* Hover Actions */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex gap-2 opacity-0 group-hover:opacity-100 transition duration-300 z-20">
          <div className="bg-clicon-orange p-2 rounded-full text-white cursor-pointer hover:bg-orange-600 shadow-lg"><Heart size={18}/></div>
          <div className="bg-white p-2 rounded-full text-black shadow-md cursor-pointer hover:bg-gray-100"><ShoppingCart size={18}/></div>
@@ -86,11 +97,7 @@ const SmallProductCard = ({ name, price, oldPrice, discount, status, image }) =>
       </div>
 
       <div className="w-full h-32 flex items-center justify-center mb-4">
-        <img 
-          src={image || "https://via.placeholder.com/150"} 
-          alt={name} 
-          className="max-w-full max-h-full object-contain group-hover:opacity-30 transition duration-300" 
-        />
+        <img src={image || "https://via.placeholder.com/150"} alt={name} className="max-w-full max-h-full object-contain group-hover:opacity-30 transition duration-300" />
       </div>
 
       <h3 className="text-xs font-medium mb-2 line-clamp-2 h-8 leading-relaxed text-clicon-black group-hover:text-clicon-orange transition-colors">

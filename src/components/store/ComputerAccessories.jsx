@@ -1,8 +1,10 @@
+import { useNavigate } from 'react-router-dom';
 import { ArrowRight, ShoppingCart, Heart, Eye, Star } from 'lucide-react';
-// Ensure this path matches where your data.js is located
 import { COMPUTER_ACCESSORIES_DATA } from '../../data';
 
 const ComputerAccessories = () => {
+  const navigate = useNavigate();
+
   return (
     <section className="max-w-[1320px] mx-auto px-6 py-10">
       <div className="flex flex-col lg:flex-row gap-6">
@@ -12,22 +14,26 @@ const ComputerAccessories = () => {
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-bold text-clicon-black">Computer Accessories</h2>
             <div className="flex gap-6 text-sm font-medium text-gray-400">
-              <span className="text-black border-b-2 border-clicon-orange pb-1 cursor-pointer">All Product</span>
-              <span className="hover:text-black cursor-pointer transition">Keyboard & Mouse</span>
-              <span className="hover:text-black cursor-pointer transition">Headphone</span>
-              <span className="hover:text-black cursor-pointer transition">Webcam</span>
-              <span className="hover:text-black cursor-pointer transition">Printer</span>
-              <button className="text-clicon-orange flex items-center gap-1 font-semibold ml-4 hover:gap-2 transition-all">
+              <span onClick={() => navigate('/shop')} className="text-black border-b-2 border-clicon-orange pb-1 cursor-pointer">All Product</span>
+              <span onClick={() => navigate('/shop?cat=keyboard')} className="hover:text-black cursor-pointer transition">Keyboard & Mouse</span>
+              <span onClick={() => navigate('/shop?cat=headphone')} className="hover:text-black cursor-pointer transition">Headphone</span>
+              <span onClick={() => navigate('/shop?cat=webcam')} className="hover:text-black cursor-pointer transition">Webcam</span>
+              <span onClick={() => navigate('/shop?cat=printer')} className="hover:text-black cursor-pointer transition">Printer</span>
+              <button 
+                onClick={() => navigate('/shop')}
+                className="text-clicon-orange flex items-center gap-1 font-semibold ml-4 hover:gap-2 transition-all"
+              >
                 Browse All Product <ArrowRight size={14}/>
               </button>
             </div>
           </div>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 border-l border-t border-gray-100">
-             {/* --- Dynamic Mapping from data.js --- */}
-             {COMPUTER_ACCESSORIES_DATA.map((product) => (
+             {/* --- ADDED .slice(0, 8) HERE --- */}
+             {COMPUTER_ACCESSORIES_DATA.slice(0, 8).map((product) => (
                <StandardCard 
                 key={product.id}
+                id={product.id}
                 tag={product.tag}
                 badge={product.badge}
                 name={product.name}
@@ -35,6 +41,7 @@ const ComputerAccessories = () => {
                 oldPrice={product.oldPrice}
                 rating={product.rating}
                 image={product.image}
+                onClick={() => navigate(`/product/${product.id}`)}
                />
              ))}
           </div>
@@ -42,7 +49,6 @@ const ComputerAccessories = () => {
 
         {/* --- Right Content: Vertical Banners --- */}
         <div className="w-full lg:w-[312px] flex flex-col gap-6">
-          {/* Yellow Xiaomi Earbuds Banner */}
           <div className="bg-[#F3DE2C]/30 border border-[#F3DE2C] p-8 rounded-sm text-center flex flex-col items-center justify-center h-[410px]">
             <img src="/FlipBuds.png" width={120} height={120} alt="earbuds" className="mb-6 object-contain" />
             <h3 className="text-xl font-bold text-clicon-black mb-2 leading-tight">Xiaomi True Wireless Earbuds</h3>
@@ -53,18 +59,23 @@ const ComputerAccessories = () => {
               <span className="text-xs text-gray-500">Only for:</span>
               <span className="bg-white px-3 py-1 font-bold text-sm rounded-sm border border-gray-100">$299 USD</span>
             </div>
-            <button className="w-full bg-clicon-orange text-white py-3 rounded-sm font-bold uppercase text-xs flex items-center justify-center gap-2 hover:bg-orange-600 transition">
+            <button 
+              onClick={() => navigate('/shop')} 
+              className="w-full bg-clicon-orange text-white py-3 rounded-sm font-bold uppercase text-xs flex items-center justify-center gap-2 hover:bg-orange-600 transition"
+            >
               Shop Now <ArrowRight size={16} />
             </button>
           </div>
 
-          {/* Blue Discount Banner */}
           <div className="bg-[#124261] p-8 rounded-sm text-center flex flex-col items-center justify-center h-[350px] relative overflow-hidden">
              <div className="z-10">
                 <span className="bg-[#303639] text-white text-[10px] font-bold px-3 py-1 rounded-sm uppercase mb-4 inline-block">Summer Sales</span>
                 <h3 className="text-2xl font-bold text-white mb-2 leading-tight">37% DISCOUNT</h3>
                 <p className="text-white/70 text-sm mb-6">only for <span className="text-clicon-yellow font-bold">SmartPhone</span> product.</p>
-                <button className="bg-[#2DA5F3] text-white px-8 py-3 rounded-sm font-bold uppercase text-xs flex items-center justify-center gap-2 mx-auto hover:bg-blue-500 transition">
+                <button 
+                  onClick={() => navigate('/shop?cat=smartphone')} 
+                  className="bg-[#2DA5F3] text-white px-8 py-3 rounded-sm font-bold uppercase text-xs flex items-center justify-center gap-2 mx-auto hover:bg-blue-500 transition"
+                >
                   Shop Now <ArrowRight size={16} />
                 </button>
              </div>
@@ -80,7 +91,10 @@ const ComputerAccessories = () => {
           <p className="text-clicon-gray text-lg mb-8 leading-relaxed">
             Apple M1 Max Chip. 32GB Unified Memory, 1TB SSD Storage
           </p>
-          <button className="bg-clicon-orange text-white px-10 py-4 rounded-sm font-bold uppercase flex items-center gap-2 hover:bg-orange-600 transition shadow-lg shadow-orange-200">
+          <button 
+            onClick={() => navigate('/shop')} 
+            className="bg-clicon-orange text-white px-10 py-4 rounded-sm font-bold uppercase flex items-center gap-2 hover:bg-orange-600 transition shadow-lg shadow-orange-200"
+          >
             Shop Now <ArrowRight size={22} />
           </button>
         </div>
@@ -95,9 +109,11 @@ const ComputerAccessories = () => {
   );
 };
 
-/* Updated Reusable Standard Card */
-const StandardCard = ({ tag, badge, name, price, oldPrice, rating, image }) => (
-  <div className="p-4 border-r border-b border-gray-100 hover:shadow-2xl transition-all relative group cursor-pointer bg-white">
+const StandardCard = ({ tag, badge, name, price, oldPrice, rating, image, onClick }) => (
+  <div 
+    onClick={onClick} 
+    className="p-4 border-r border-b border-gray-100 hover:shadow-2xl transition-all relative group cursor-pointer bg-white"
+  >
     {tag && <span className="absolute top-4 left-4 bg-red-500 text-white text-[10px] font-bold px-2 py-1 rounded-sm z-10">{tag}</span>}
     {badge && (
       <span className={`${badge.includes('OFF') ? 'bg-[#F3DE2C] text-black' : 'bg-blue-500 text-white'} absolute top-4 left-4 text-[10px] font-bold px-2 py-1 rounded-sm uppercase z-10`}>

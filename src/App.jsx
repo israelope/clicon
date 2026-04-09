@@ -2,6 +2,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/shared/Navbar';
 import Footer from './components/shared/Footer';
 import StoreHome from './pages/StoreHome';
+import ProductDetails from './pages/ProductDetail'; // Placeholder for product details page
+import Shop from './pages/Shop'; // Placeholder for shop page
+import BlogDetailPage from './pages/BlogDetailPage'; // Placeholder for blog details page
 
 // Temporary Page Components (We will replace these with your designs)
 const Home = () => (
@@ -30,7 +33,10 @@ function App() {
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<StoreHome />} />
+            <Route path="/shop" element={<Shop />} />
             <Route path="/admin" element={<Admin />} />
+            <Route path="/blog/:id" element={<BlogDetailPage />} />
+            <Route path="/product/:id" element={<ProductDetails/>} />
           </Routes>
         </main>
 

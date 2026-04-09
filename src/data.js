@@ -52,6 +52,14 @@ export const COMPUTER_ACCESSORIES_DATA = [
   { id: 6, badge: "SALE", name: "4K UHD LED Smart TV with Chromecast", price: "220", rating: 4, image: "/tv.png" },
   { id: 7, name: "Wired Over-Ear Gaming Headphones", price: "1,500", rating: 5, image: "/headphones.png" },
   { id: 8, badge: "25% OFF", name: "Polaroid 57-Inch Photo/Video Tripod", price: "1,200", oldPrice: "1600", rating: 4, image: "/tripod.png" },
+  { id: 9, badge: "BEST DEALS", name: "Amazon Basics High-Speed HDMI Cable", price: "360", rating: 5, image: "/hdmi.png" },
+  { id: 10, name: "Portable Washing Machine, 11lbs capacity", price: "80", rating: 4, image: "/washer.png" },
+  { id: 11, tag: "HOT", name: "TOZO T6 True Wireless Earbuds", price: "70", rating: 5, image: "/tozo.png" },
+  { id: 12, name: "Dell Optiplex 7000x7480 All-in-One Monitor", price: "250", rating: 5, image: "/monitor.png" },
+  { id: 13, name: "Samsung Electronics Samsung Galaxy S21 5G", price: "2,300", rating: 4, image: "/s21.png" },
+  { id: 14, badge: "SALE", name: "4K UHD LED Smart TV with Chromecast", price: "220", rating: 4, image: "/tv.png" },
+  { id: 15, name: "Wired Over-Ear Gaming Headphones", price: "1,500", rating: 5, image: "/headphones.png" },
+  { id: 16, badge: "25% OFF", name: "Polaroid 57-Inch Photo/Video Tripod", price: "1,200", oldPrice: "1600", rating: 4, image: "/tripod.png" },
 ];
 
 export const FEATURED_PRODUCTS_DATA = [
