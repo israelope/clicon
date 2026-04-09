@@ -1,1 +1,16 @@
 @import "tailwindcss";
+
+@theme {
+  --color-clicon-blue: #1b6392;
+  --color-clicon-dark-blue: #124261; /* For the very top sub-bar if needed */
+  --color-clicon-yellow: #f3de2c;
+  --color-clicon-black: #191c1f;
+  --color-clicon-orange: #fa8232;
+  --color-clicon-dark: #191c1f;
+  --color-clicon-footer-text: #929fa5;
+  --color-clicon-blue: #1b6392;
+  --color-clicon-orange: #fa8232;
+  --color-clicon-black: #191c1f;
+  --color-clicon-yellow: #f3de2c;
+  --color-clicon-gray: #5f6c72;
+}
