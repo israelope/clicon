@@ -68,7 +68,7 @@ const Navbar = () => {
             <div className="w-11 h-11 border-[4.5px] border-white rounded-full flex items-center justify-center">
               <div className="w-3.5 h-3.5 bg-white rounded-full"></div>
             </div>
-            <span className="text-[32px] font-bold tracking-tight uppercase">Clicon</span>
+           <a href="/"> <span className="text-[32px] font-bold tracking-tight uppercase">Clicon</span></a>
           </div>
 
           {/* Wide Search Bar */}
