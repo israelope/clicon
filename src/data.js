@@ -19,7 +19,7 @@ export const HERO_SLIDES_DATA = [
     title: "Nintendo Switch",
     desc: "Play at home on the TV or on-the-go with a vibrant 7-inch OLED screen.",
     price: "$349",
-    image: "/switch.png", 
+    image: "/Nintendo.png", 
     color: "bg-[#E3E9EB]"
   },
   {
@@ -28,7 +28,7 @@ export const HERO_SLIDES_DATA = [
     title: "PlayStation 5",
     desc: "Experience lightning-fast loading with an ultra-high speed SSD.",
     price: "$499",
-    image: "/ps5.png", 
+    image: "/ps.png", 
     color: "bg-[#F2F4F5]"
   }
 ];
@@ -37,10 +37,10 @@ export const BEST_DEALS_DATA = [
   { id: 1, name: "Bose Sport Earbuds - Wireless...", price: "2,300", status: "SOLD OUT", image: "/FlipBuds.png" },
   { id: 2, name: "Simple Mobile 4G LTE Prepaid...", price: "220", image: "/SmartPhone.png" },
   { id: 3, name: "4K UHD LED Smart TV with...", price: "1,500", oldPrice: "865", discount: "19% OFF", image: "/TV.png" },
-  { id: 4, name: "Sony DSCHX8 High Zoom Point...", price: "1,200", image: "/Camera.png" },
+  { id: 4, name: "Sony DSCHX8 High Zoom Point...", price: "1,200", image: "/Camera .png" },
   { id: 5, name: "Dell Optiplex 7000x7480...", price: "1,200", image: "/Monitor.png" },
   { id: 6, name: "JBL FLIP 4 - Waterproof...", price: "1,200", image: "/Speaker.png" },
-  { id: 7, name: "Portable Washing Machine...", price: "1,200", image: "/Washer.png" },
+  { id: 7, name: "Portable Washing Machine...", price: "1,200", image: "/.png" },
   { id: 8, name: "2-Barrel Carburetor Carb...", price: "1,200", image: "/Carb.png" },
 ];
 
@@ -132,7 +132,7 @@ export const LATEST_NEWS_DATA = {
   blogPosts: [
     { id: 1, image: "/Blog.jpg", author: "Kristin", date: "19 Dec, 2013", comments: "453", title: "The future of AI in consumer electronics", desc: "How smart devices are changing our daily routines..." },
     { id: 2, image: "/Blog1.jpg", author: "Robert", date: "28 Nov, 2015", comments: "738", title: "Top 10 gaming setups of 2026", desc: "A look into the most immersive setups ever built..." },
-    { id: 3, image: "/Blog.jpg", author: "Arlene", date: "9 May, 2014", comments: "826", title: "Why your SSD choice matters", desc: "Performance benchmarks for the latest storage tech..." },
+    { id: 3, image: "/Blog2.jpg", author: "Arlene", date: "9 May, 2014", comments: "826", title: "Why your SSD choice matters", desc: "Performance benchmarks for the latest storage tech..." },
   ],
   miniLists: [
     { id: 1, name: "Bose Sport Earbuds - Wireless...", price: "1,500", image: "/FlipBuds.png" },
