@@ -38,10 +38,10 @@ export const BEST_DEALS_DATA = [
   { id: 2, name: "Simple Mobile 4G LTE Prepaid...", price: "220", image: "/SmartPhone.png" },
   { id: 3, name: "4K UHD LED Smart TV with...", price: "1,500", oldPrice: "865", discount: "19% OFF", image: "/TV.png" },
   { id: 4, name: "Sony DSCHX8 High Zoom Point...", price: "1,200", image: "/Camera .png" },
-  { id: 5, name: "Dell Optiplex 7000x7480...", price: "1,200", image: "/Monitor.png" },
-  { id: 6, name: "JBL FLIP 4 - Waterproof...", price: "1,200", image: "/Speaker.png" },
-  { id: 7, name: "Portable Washing Machine...", price: "1,200", image: "/.png" },
-  { id: 8, name: "2-Barrel Carburetor Carb...", price: "1,200", image: "/Carb.png" },
+  { id: 5, name: "Dell Optiplex 7000x7480...", price: "1,200", image: "/dell.png" },
+  { id: 6, name: "JBL FLIP 4 - Waterproof...", price: "1,200", image: "/jbl.png" },
+  { id: 7, name: "Portable Washing Machine...", price: "1,200", image: "/washing.png" },
+  { id: 8, name: "2-Barrel Carburetor Carb...", price: "1,200", image: "/Cab.png" },
 ];
 
 export const COMPUTER_ACCESSORIES_DATA = [
